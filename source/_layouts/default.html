@@ -35,13 +35,17 @@
 	
 			<header>
 				<div class="title">{{ site.title }}</div>
-				
-				<div class="navi">
-					<ul>
-						<li><a href="{{ root_url }}/">Blog</a></li>
-						<li><a href="{{ root_url }}/blog/archives">Archives</a></li>
-					<ul>
-				</div> <!-- // .navi -->
+								
+								<div class="navi">
+									<ul>
+										<li><a href="{{ root_url }}/">Blog</a></li>
+										<li><a href="{{ root_url }}/blog/archives">Archives</a></li>
+										<li><a href="{{ root_url }}/about">About</a></li>
+										<li><a href="http://github.com/browniefed">Github</a></li>
+										<li><a href="http://twitter.com/browniefed">Twitter</a></li>
+										<li><a href="http://browniefed.com">Portfolio?</a></li>
+									<ul>
+								</div> <!-- // .navi -->
 			</header>
 		
 				{{ content | expand_urls: root_url }}
