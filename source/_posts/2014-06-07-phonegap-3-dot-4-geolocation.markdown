@@ -3,7 +3,7 @@ layout: post
 title: "Phonegap 3.4 GeoLocation"
 date: 2014-06-07 08:28
 comments: true
-categories: 
+categories: phonegap 3.4 geolocation documentation gps
 ---
 
 It doesn't appear to be just me but PhoneGap can be incredibly difficult to use. Simply because any information pertaining to the most current version of phonegap is so fragmented. A google search will reveal virtually nothing about the error messages you're receiving and how to remedy them for current versions.
