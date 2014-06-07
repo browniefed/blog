@@ -16,6 +16,6 @@ For example, I was attempting to use the GeoLocation API. Could care less about 
 
 Version `0.3.8` was the current version at the time of this article. Actually released on June 5th, 2014 just before the article written on June 6th, 2014.
 
-I've sort of determined that the only real reliable way to determine anything is just to look at the release notes on github [https://github.com/apache/cordova-plugin-geolocation/blob/master/RELEASENOTES.md](https://github.com/apache/cordova-plugin-geolocation/blob/master/RELEASENOTES.md) for the best most up to date information.
+I've sort of determined that the only real reliable way to determine anything is just to look at the release notes on [github](https://github.com/apache/cordova-plugin-geolocation/blob/master/RELEASENOTES.md) for the best most up to date information.
 
 To end I should say I really love PhoneGap and all of the time and effort people are putting into developing it. The documentation and information about current versions is fragmented, and rather than ranting I should be helping out and contributing to documentation and solving the problems. That should always be the goal if you find a problem in the open source world. Don't rant, help out, and that is what I will do.
