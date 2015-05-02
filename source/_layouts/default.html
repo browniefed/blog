@@ -55,6 +55,7 @@
 			</footer>
 			
 		</div> <!-- // .wrap -->
+          {% include after_footer.html %}
 	</body>
 	<script>
 		$(document).ready(function() {
@@ -83,5 +84,7 @@
 			});
 		});
 	</script>
+    {% include disqus.html %}
+
 </html>
 <!-- END OF _layouts/default.html -->

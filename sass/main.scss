@@ -241,7 +241,15 @@ p > code {
 	}
 
 .code {
-  width: 100%;
+  width: auto;
+}
+
+.highlight {
+    overflow-x: auto;
+}
+
+.content a {
+  word-break: break-all;
 }
 
 .pagination {
