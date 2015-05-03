@@ -1,0 +1,147 @@
+---
+layout: post
+title: "React, Higher Order Components, and Legacy Applications"
+date: 2015-05-02 12:08
+comments: true
+categories: ext react reactjs higher order components legacy applications
+---
+
+At work we embarked on an ambitious task of converting our legacy application (ExtJS 3.4) over to React.
+Now obviously rewriting an application that has been built over the course of 7 years could not just be simply re-written. We had to be very strategic about it.
+
+React is one of the perfect rendering libraries for this since re-rendering the same component at the same spot will just cause the React to go through its diff/normal rendering process.
+
+However if you don't maintain separation of concerns you may just get a lot of Ext into your ReactJS components, and you'll be in an even bigger mess. We don't want that, and that is where higher order components come into play.
+
+###Higher Order Components
+
+If you haven't read the post [Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750) then I highly recommend you do so. Higher order components are not a bullet proof replacement for mixins but they are an amazing solution for integrating at the seams of where your legacy application meets your new React world.
+
+If you don't understand what a Higher order component is after reading the article above let me quickly explain.
+It's a function that takes a React component of your choosing and then returns a wrapped React component that renders the React component that you provided it.
+
+A Quick example
+```
+
+var NameSupplier = function(Component) {
+    
+    var NameSupplierComponent = React.createClass({
+
+        getUserName: function() {
+            //Somewhere the username is stored but we'll just return a string
+            return "Jason"
+        },
+        render: function() {
+
+            return (
+                <Component username={this.getUserName()} />
+            )
+        }
+    });
+
+    return NameSupplierComponent;
+}
+
+
+```
+
+This component is slightly contrived and doesn't show this will help us integrate with a legacy app. All this component is doing is passing down a prop to a component you gave it.
+So how would we go about using this higher order component?
+
+```
+var UserPost = React.createClass({
+    render: function() {
+        return (
+            <div>
+                {this.props.username} created this.
+            </div>
+        )
+    }
+});
+
+var ActiveUserPost = NameSupplier(UserPost);
+
+module.exports = ActiveUserPost;
+
+```
+Then later
+
+```
+var ActiveUserPost = require('ActiveUserPost');
+
+React.render(<ActiveUserPost />, el);
+```
+
+
+
+### Using them with legacy applications
+
+This strategy really shines when all you need to do is hook into the life cycle events to cause updates in your legacy application.
+
+In our application we are still utilizing ExtJS tabs. When you visit an item say we render an `ItemView` and say the user starts editing the item. We want to indicate in the title of the Ext tab that it is a dirty form and that is done by marking it with an *. The issue is that as we deprecate Ext we don't want to mix our Ext updating logic with our new `ItemView` logic. 
+
+This requires that state be at an upper level, which the article above by Dan shows how to use higher order components to fetch data, and essentially bring state up one level.
+
+The structure of our application will look like so
+
+```
+<ExtTab> // Passes down a function called appendTitle
+    <ItemViewState> <--- Could and should also be a higher order component taht wraps ExtEditableItemView but for visual sake it's a composition component
+        <ExtEditableItemView /> <--- This is an ItemView wrapped by an ExtEditable higher order component
+    </ItemViewState>
+</ExtTab>
+
+```
+
+With state moved up a level into the `ItemViewState` component any time data changes our `ExtEditableItemView` will go re-render and go through it's life cycle methods.
+
+The requirement here is that the `ExtTab` in our old world passes down a function as a prop which our higher order component will call.
+
+In the end our code looks like this
+
+```
+var ExtEditableTitle = function(Component) {
+    propTypes: {
+        appendTitle: React.PropTypes.func
+    },
+    getDefaultProps: function() {
+        return {
+            appendTitle: function() {} //Noop function
+        }
+    },   
+    componentDidMount: function() {
+        this.handleTitleUpdate();
+    },
+    componentDidUpdate: function() {
+        this.handleTitleUpdate();
+    },
+    handleTitleUpdate: function() {
+        var appendToTitle = (this.props.editing && '*' || ''); // If we're editing then append a * to the title
+        this.props.appendTitle(appendToTitle);
+    },
+    render: function() {
+        return (
+            <Component
+                {...this.props}
+                {//Additionally we should omit the appendTitle function from being passed down to our ItemView}
+            />
+        )
+    }
+
+}
+
+```
+
+```
+var ExtEditableItemView = ExtEditableTitle(ItemView);
+module.exports = ExtEditableItemView;
+```
+
+So now we have moved our state up a level to `ItemViewState`, we used a higher order component to make a seam that hooks into the life cycle events of our `ItemView` component which tells our old world what to do with it's title.
+
+When it comes time to remove Ext tabs, or possibly replace it with adding a * to the browser title we can write a new higher order component that hooks into the same life cycle methods and our `ItemView` is none the wiser.
+
+
+###Conclusion
+
+Higher order components may not solve all of your problems but so far they have helped me in a few different scenarios that would have caused me to mix concerns with our React/ExtJS world. They provide a nice upgrade path for future modifications, and maintain our ability to compose components with ease.
