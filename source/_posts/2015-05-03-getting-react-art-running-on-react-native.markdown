@@ -234,3 +234,5 @@ If you get it figured out let me know.
 
 ##Conclusion
 That's it, you can now render your react-art code natively. Enjoy
+
+{% img http://i.imgur.com/AXbsaTB.png Final result %}
