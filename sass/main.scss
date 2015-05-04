@@ -124,7 +124,12 @@ blockquote {
 	font-size: $blockquote-font-size;
 	}
 	
-article {
+.article-footer {
+    padding: $tags-spacing 0;
+    border-bottom: 1px solid $light-gray;
+    border-top: 1px solid $light-gray;
+}
+article, .article-wrap {
 	margin-bottom: $space-between-posts*1em;
 	padding: 0;
 	font-size: $post-font-size;
@@ -134,13 +139,6 @@ article {
 	.content {
 		padding-bottom: $post-content-bottom-space;
 		}
-		
-	footer {
-		padding: $tags-spacing 0;
-		border-bottom: 1px solid $light-gray;
-		border-top: 1px solid $light-gray;
-		}
-		
 	h1, h2, h3 {
 		text-align: $subheadings-align;
 		
