@@ -72,7 +72,7 @@ var Demo = React.createClass({
 
 ### Simple Shapes
 
-Now `react-art` already comes with a few different shapes but `paths.js` have a few built in as well, like `Rectable`
+Now `react-art` already comes with a few different shapes but `paths.js` have a few built in as well, like `Rectangle` and `Bezier` curve.
 
 ```
 var rectangle = Rectangle({
