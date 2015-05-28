@@ -42,15 +42,40 @@ var React = require('react'),
 	Path = require('paths-js/path');
 
 var Demo = React.createClass({
+	getInitialState: function() {
+		return {
+			to: {
+				x: 30,
+				y: 50
+			}
+		}
+	},
 	getPath: function() {
 		var path = Path()
 					  .moveto(10, 20)
-					  .lineto(30, 50)
+					  .lineto(this.state.to.x, this.state.to.y)
 					  .lineto(25, 28)
 					  .qcurveto(27, 30, 32, 27)
 					  .closepath();
 
 	 	return path.print();
+	},
+	startAnimating: function() {
+
+		if (this.state.to.x === 100) {
+			this.addToPosition = -1;
+		} else if (this.state.to.x === 29) {
+			this.addToPosition = 1;
+		}
+
+		this.state.to.x += this.addToPosition;
+		this.state.to.y += this.addToPosition;
+
+		this.setState(this.state);
+	},
+	componentDidMount: function() {
+		this.addToPosition = 1;
+		setInterval(this.startAnimating, 17)
 	},
 	render: function() {
 		return (
@@ -65,6 +90,8 @@ var Demo = React.createClass({
 		)
 	}
 });
+
+module.exports = Demo;
 ```
 
 <p data-height="624" data-theme-id="0" data-slug-hash="VLmOOE" data-default-tab="result" data-user="browniefed" class='codepen'>See the Pen <a href='http://codepen.io/browniefed/pen/VLmOOE/'>VLmOOE</a> by Jason Brown (<a href='http://codepen.io/browniefed'>@browniefed</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
