@@ -18,6 +18,14 @@ All of these are great when working with `react-art` because it's just returning
 
 ### Paths
 
+#### UPDATE: 
+
+Sebastian Markbage (the creator of ReactART and ART), informed me that `ReactART` itself has a `Path` implementation. I realized this but didn't think much of it.
+However per the discussion here [https://discuss.reactjs.org/t/react-art-with-paths-js/492](https://discuss.reactjs.org/t/react-art-with-paths-js/492) the `ART` path is faster as it takes advantage of the current `mode` to create the most efficient path instead of taking a string and converting it back into native for instructions for canvas rendering.
+
+The `ReactART.Path` has similar methods. Check out the discuss thread for a link to the implementation to find out the supported methods. I'm currently working on `ReactART` documentation so expect that soon.
+
+
 Example:
 
 ```

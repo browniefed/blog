@@ -115,7 +115,7 @@ And your `VectorWidget.js` file
 "use strict";
 
 var React = require('react-native');
-var ReactArt = require('./node_modules/react-native/Libraries/ART/ReactIOSART');
+var ReactART = require('ReactNativeART');
 var {
     Art,
     TouchableWithoutFeedback
