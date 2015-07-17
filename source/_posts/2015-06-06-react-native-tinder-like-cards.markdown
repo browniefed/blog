@@ -6,6 +6,8 @@ comments: true
 categories: tinder react-native cards swipe react 
 ---
 
+# CHECK OUT ====> [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder) for a better demo with the new Animated API!!!
+
 ## Intro
 
 The test of all good frameworks is how easy it is to implement Tinder right? Well with `react-native` we do get the benefits of flex box as well as some transforms which we'll take advantage of. 
