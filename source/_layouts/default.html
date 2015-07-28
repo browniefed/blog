@@ -9,6 +9,8 @@
 		<meta content="{{ site.description }}" name="description">
 		<meta content="{{ site.title }}" name="author">
 		
+        <link rel='alternate' type='application/atom+xml' title='{{site.title}}' href='{{site.url}}{{site.subscribe_rss}}'>
+
 		<title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title>
 		
 		<!-- Styles -->
@@ -20,7 +22,6 @@
 		
 		<!-- jQuery and plugins -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="{{ root_url }}/js/jquery.zclip.min.js"></script>
 		
 		<!-- Syntax highlighter -->
 		<link href="{{ root_url }}/stylesheets/prettify-hemisu.css" type="text/css" rel="stylesheet" />

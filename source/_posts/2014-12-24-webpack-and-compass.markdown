@@ -33,7 +33,7 @@ Your webpack config may look something along the lines of
 
 This is where you're running into your issue where `node-sass` can't find the compass import.
 
-Thanks to igosuki, compass mixins has been ported to just a bunch of sass-mixins outside of the ruby gem. https://github.com/Igosuki/compass-mixins.
+Thanks to igosuki, compass mixins has been ported to just a bunch of sass-mixins outside of the ruby gem. [https://github.com/Igosuki/compass-mixins](https://github.com/Igosuki/compass-mixins)
 
 So now do a 
 
