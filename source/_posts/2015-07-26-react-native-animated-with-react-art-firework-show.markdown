@@ -331,7 +331,7 @@ We could create all sorts of tails that fly around and do cool things but that i
 First lets setup some variables
 
 ```
-var PARTICLE_RADIUS = 15; // How big should the explosions be
+var PARTICLE_RADIUS = 30; // How big should the explosions be
 var PARTICLE_COUNT = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]; // How many particles per explosion, this is the lazy persons range call
 
 var PARTICLE_COLORS = [
@@ -584,7 +584,7 @@ var {
 } = Dimensions.get('window');
 
 var MORTAR_RADIUS = 5;
-var PARTICLE_RADIUS = 15;
+var PARTICLE_RADIUS = 30;
 var PARTICLE_COUNT = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
 var {

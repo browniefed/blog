@@ -3,15 +3,15 @@ layout: post
 title: "React-native Animated API with PanResponder"
 date: 2015-07-26 14:17
 comments: true
-categories: react-native react Animated API PanResponder touch movement
+categories: react-native react Animated API PanResponder touch movement tinder 
 published: false
 ---
 
 #Introduction 
 
-The previous example was a very basic one, just moving a box around the screen. But you'll likely want to do something by touch. Dragging, dropping, flicking, all those good mobile interactions.
+The previous example was a very basic one, just moving a box around the screen. But you'll likely want to do something by touch. Dragging, dropping, flicking, all those good mobile interactions. I previously covered how to make Tinder cards but I didn't add any true animations in. With the new Animated API you can make an even better Tinder card demo. And that's what [Brent](https://twitter.com/notbrent) did.
 
-This code was inspired by [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder). I decide to break it apart, simplify it and explain the bits as we build it.
+This blog post was inspired by [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder). I decide to break it apart, simplify it and explain the bits as we build it.
 
 # Setup
 
@@ -197,14 +197,20 @@ We'll have to make some small adjustments but the only thing we need to change i
 We create an interpolate that determines the correct value from an `inputRange`.
 When our drag is `-200` or greater our rotate will be `-30 degrees`, at 0 it is 0, and if moved to the right at `200` or great then it's `30 degrees`.
 
+Interpolate is smart enough to take an input range, and interpolate an inbetween degree. So as you slowly move the card the degrees will adjust, so an input value of `100` would translate to a `15 degree` rotation.
+
 For opacity we want the same inputs, except our outputs will be `.5` for both sides and `1` at 0 movement.
+The interpolation of the opacity operates the same as the degrees, as you rotate it'll adjust the opacity to a maximum/minimum of .5.
 
 {% img http://i.imgur.com/b5K2fcx.gif Final with rotation and opacity %}
 
 
-#Final
+# Final
 
-Play with it here [https://rnplay.org/apps/71CyoA](https://rnplay.org/apps/71CyoA).
+This doesn't explain all the techniques used in the tinder card demo. One such thing is the flicking capabilities. 
+That uses `Animated.decay` and some physics (velocity,friction) to animate a value.
+
+### Play with it here [https://rnplay.org/apps/71CyoA](https://rnplay.org/apps/71CyoA).
 
 
 #Full Code
