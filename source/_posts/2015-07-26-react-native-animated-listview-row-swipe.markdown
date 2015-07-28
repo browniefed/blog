@@ -13,9 +13,9 @@ Have you ever wanted to swipe a row in a list view to take some sort of action. 
 
 # What are we trying to accomplish
 
-{% img http://i.imgur.com/z1tko0s.gif Swipe Actions %}
+{% img http://i.imgur.com/z1tko0s.gif Swipe Action GIF from @dubert %}
 
-This is not an orignal interaction, you can follow along with how I stumbled upon it and such here [https://github.com/facebook/react-native/issues/2072](https://github.com/facebook/react-native/issues/2072). Swiping rows is also just a normal action in iOS.
+This is not an orignal interaction I created, you can follow along with how I stumbled upon it and such here [https://github.com/facebook/react-native/issues/2072](https://github.com/facebook/react-native/issues/2072). Swiping rows is also just a normal action in iOS.
 
 
 # The Concept
