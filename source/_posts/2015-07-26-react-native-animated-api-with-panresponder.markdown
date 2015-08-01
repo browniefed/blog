@@ -11,7 +11,9 @@ published: false
 
 The previous example was a very basic one, just moving a box around the screen. But you'll likely want to do something by touch. Dragging, dropping, flicking, all those good mobile interactions. I previously covered how to make Tinder cards but I didn't add any true animations in. With the new Animated API you can make an even better Tinder card demo. And that's what [Brent](https://twitter.com/notbrent) did.
 
-This blog post was inspired by [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder). I decide to break it apart, simplify it and explain the bits as we build it.
+This blog post was inspired by [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder). I decide to break it apart, simplify it and explain the bits as we re-build it.
+
+We will not fully reimplement it since you can learn the full ins and outs by checking out the code.
 
 # Setup
 
@@ -112,7 +114,7 @@ We give our `onPanResponderMove` an `Animated.event`. This creates a function th
 
 Finally `onPanResponderRelease` we call `flattenOffset`. This takes the current `x,y` and the current offset (aka how much you've dragged it around). And combines them.
 
-The internal code looks like this 
+The internal code for flattenOffset looks like this 
 
 ```
   flattenOffset(): void {
@@ -136,7 +138,6 @@ The internal code looks like this
 Here we spread the handlers onto the our `Animated.View` so it sets up all the calls correctly.
 
 
-
 # We have a square that moves
 
 Great we have a square that moves and it stays where we left it, and also when we move it again it picks up from the same coordinates that we dropped it at.
@@ -147,7 +148,7 @@ Great we have a square that moves and it stays where we left it, and also when w
 
 # Reset to 0 with a spring
 
-Holy crap that was easy. We just replace our `flattenOffset` call which would leave our square where we left it and instead create a spring that animates our `this.state.pan` back to 0. Which will correctly animate our `x,y` back to 0. 
+We just replace our `flattenOffset` call which would leave our square where we left it and instead create a spring that animates our `this.state.pan` back to 0. Which will correctly animate our `x,y` back to 0 and provide a nice little bounce.
 
 Here is the code.
 
@@ -165,7 +166,7 @@ Yes it is really that simple.
 
 # Opacity and rotation
 
-Because we want the opacity and the rotation to be tied to the movement position we can use the `interpolate` feature from the `this.state.pan` we created from `Animated.ValueXY`.
+Because we want the opacity and the rotation to be tied to the movement position we can use the `interpolate` we created from `Animated.ValueXY` on `this.state.pan` .
 
 We'll have to make some small adjustments but the only thing we need to change is our `getStyle` function.
 

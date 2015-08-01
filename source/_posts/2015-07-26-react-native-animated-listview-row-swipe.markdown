@@ -1,30 +1,31 @@
 ---
 layout: post
-title: "React-native Animated ListView Row Swipe Actions"
-date: 2015-07-26 16:17
+title: "React-native Animated ScrollView Row Swipe Actions"
+date: 2015-08-01 16:17
 comments: true
-categories: react-native react animted listview row swipe
-published: false
+categories: react-native react animted scrollview row swipe
 ---
 
 #Introduction
 
-Have you ever wanted to swipe a row in a list view to take some sort of action. Swipe left to delete, swipe right to archive, swipe to do whatever. Well previously without the Animated API that wasn't necessarily hard it was just inefficient and a bit janky, especially when animating color steps and interpolating via `setState`.
+Have you ever wanted to swipe a row in a scroll view to take some sort of action. Swipe left to delete, swipe right to archive, swipe to do whatever. Well previously without the Animated API that wasn't necessarily hard it was just inefficient due to having to use `setState` causing a lot of diffs.
 
 # What are we trying to accomplish
 
 {% img http://i.imgur.com/z1tko0s.gif Swipe Action GIF from @dubert %}
 
-This is not an orignal interaction I created, you can follow along with how I stumbled upon it and such here [https://github.com/facebook/react-native/issues/2072](https://github.com/facebook/react-native/issues/2072). Swiping rows is also just a normal action in iOS.
+This is not an orignal interaction I created, you can follow along with how I stumbled upon it and such here [https://github.com/facebook/react-native/issues/2072](https://github.com/facebook/react-native/issues/2072). 
+
+Swiping rows is also just a normal action in iOS. However there is an ongoing debate here about ListView/ScrollView being wrapped in a UITableView which would provide some of this interaction as default. You can read through it here [https://github.com/facebook/react-native/issues/332](https://github.com/facebook/react-native/issues/332) but we'll forge ahead and implement it with what we have to work with.
 
 
 # The Concept
 
 Previously I attempted, and successfully implemented this with the `PanResponder`. There is nothing particularly bad about that approach except you will run into issues being embedded in a `ScrollView`. 
 
-What issues? Well while swiping left/right the content locks won't be set, which means the `PanResponder` will get stuck in a row. This is not good.
+What issues? Well while swiping left/right the content direction locks won't be set, which means if you don't swipe perfectly left <=> right and introduce some up/down your row will get stuck. That is not a good interaction.
 
-So thanks to the solid recommendation by [sahrens](https://github.com/sahrens) we will do a `ScrollView` with each row being a Horizontal `ScrollView`. This means iOS will negotiate content locks correctly. So when you scroll up and down the body content will scroll, left and right will cause each row to slide.
+So thanks to the solid recommendation by [sahrens](https://github.com/sahrens) we will do a `ScrollView` with each row being a Horizontal `ScrollView`. This means iOS will negotiate content direction locks correctly. So when you scroll up and down the body content will scroll, left and right will cause each row to slide.
 
 # Drawbacks
 
@@ -116,7 +117,7 @@ var AnimatedFlick = React.createClass({
           style={styles.row}
           key={index}
         >
-          <Text>{value}</Text>
+          <Text>{value + "  <----- Slide the row that way and release"}</Text>
         </View>
     )
   },
@@ -151,7 +152,7 @@ We map those values to the `_renderRow` function, which we just return a basic `
             style={{flex: 1, height: 100, backgroundColor: '#CCC'}}
           >
             <View>
-              <Text>{value}</Text>
+              <Text>{value + "  <----- Slide the row that way and release"}</Text>
             </View>
           </ScrollView>
         </View>
@@ -159,7 +160,8 @@ We map those values to the `_renderRow` function, which we just return a basic `
   }
 
 ```
-We wrap our view content in `ScrollView` with `horizontal` true and `directionLockEnabeled`. This means you can scroll on direction, and one direction only. Back to point 1, we have to set the height specifically here.
+We wrap our view content in `ScrollView` with `horizontal` true and `directionLockEnabeled`. This means when you start scroll one direction it will lock that direction and not let you scroll a different way. In our case once you start swiping left/right you can only swipe left/right. 
+Back to point 1, we have to set the height specifically here.
 
 This is what we have now.
 
@@ -198,14 +200,14 @@ This is what we have now.
             scrollEventThrottle={16}
           >
             <View style={{flex: 1}}>
-              <Text>{value}</Text>
+              <Text>{value + "  <----- Slide the row that way and release"}</Text>
             </View>
           </AnimatedScrollView>
         </View>
     )
   },
 ```
-We need to create an interpolation. How the interpolation works is given a value, in our case colors that are just an array of values `[0,1,2]` will return a new value which corresponds to the `outputRange`. So when the `this.state.colors[index]` value is `0` it will return `GREY` or `rgb(180, 180, 180)`, and so on and so forth.
+We need to create an interpolation. How the interpolation works is given a value, in our case colors that are just an array of values `[0,1,2]` will return a new value which corresponds to the `outputRange`. So when the `this.state.colors[index]` value is `0` it will return `GREY` or `rgb(180, 180, 180)`, and so on and so forth. When it changes from `GREY` to `GREEN` it'll animate to the new color of `rgb(63, 236, 35)`.
 
 This is where we use the `AnimatedScrollView` we created before. This will correctly take the animated value we pass in a grab the interpolatd background.
 
@@ -266,7 +268,7 @@ Hopefully this all doesn't seem too complicated. We are essentially saying "If s
             onMomentumScrollBegin={this.takeAction}
           >
             <View style={{flex: 1}}>
-              <Text>{value}</Text>
+              <Text>{value + "  <----- Slide the row that way and release"}</Text>
             </View>
           </AnimatedScrollView>
         </View>
@@ -428,7 +430,7 @@ var AnimatedFlick = React.createClass({
             onMomentumScrollBegin={this.takeAction}
           >
             <View style={{flex: 1}}>
-              <Text>{value}</Text>
+              <Text>{value + "  <----- Slide the row that way and release"}</Text>
             </View>
           </AnimatedScrollView>
         </View>

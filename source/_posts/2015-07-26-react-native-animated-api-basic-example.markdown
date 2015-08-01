@@ -22,7 +22,7 @@ Animations are finally solved in React? That's a bold claim, but lets explore th
 
 #How It Works
 
-The Animated API does not depend on state. It does, however it is not accomplished by using `setState`. The Animated API exports a few components `Animated.View`, `Animated.Text`, and `Animated.Image`. The Animated API will adjust the components in the native Objective-C world. This will bypass the diff and reconciliation in the JS world so you get fluent, and performance animatons. Ultimately all you need to know is that it will interpolate numbers and update the native view components.
+The Animated API does not depend on calling `setState`, it is accomplished by calling `setNativeProps`. The Animated API exports a few components `Animated.View`, `Animated.Text`, and `Animated.Image`. The Animated API will adjust the components in the native Objective-C world. This will bypass the diff and reconciliation in the JS world so you get fluent, and performance animatons. Ultimately all you need to know is that it will interpolate numbers and update the native view components.
 
 #Cool Examples
 
