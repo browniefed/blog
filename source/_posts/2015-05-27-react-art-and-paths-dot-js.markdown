@@ -16,6 +16,9 @@ categories: react react-art paths.js svg canvas graphing
 
 All of these are great when working with `react-art` because it's just returning data. I'll say it once, and a million more but libraries that just generate data make it easy to traverse and render with `react-art`.
 
+<!-- more -->
+
+
 ### Paths
 
 #### UPDATE: 

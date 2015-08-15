@@ -5,11 +5,19 @@
 		<time>{{ page.date | date: "%d %B %Y" }}</time>
 	</header>
 	<div class="content">
-		{{ content }}
+		{% if index %}
+          <div class="entry-content">{{ content | excerpt }}</div>
+          {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
+          {% if excerpted == 'true' %}
+            <a rel="full-article" href="{{ root_url }}{{ page.url }}">{{ site.excerpt_link }}</a>
+          {% endif %}
+        {% else %}
+            <div class="entry-content">{{ content }}</div>
+        {% endif %}
 	</div>
 	<div>
-		{% include post/categories.html %}
-	{% if page.source.url %}via <a href="{{ page.source.url }}">{{ page.source.title }}</a>{% endif %}
+    	{% include post/categories.html %}
+    	{% if page.source.url %}via <a href="{{ page.source.url }}">{{ page.source.title }}</a>{% endif %}
 	</div>
 	
 </article>

@@ -19,6 +19,9 @@ This article is less about `react-art` and more about just how to use `shifty.js
 
 Example of a basic tween movement
 
+<!-- more -->
+
+
 ```
 var tweenable = new Shifty();
         

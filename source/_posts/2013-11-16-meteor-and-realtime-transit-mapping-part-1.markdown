@@ -28,6 +28,8 @@ Currently on Mac/Linux are officially supported and Windows has an unofficial in
 To install simple go here and follow the instrutions(2 steps!) http://docs.meteor.com/
 Step 2 being creating a meteor project
 
+<!-- more -->
+
 ```
 meteor create realtimetransit
 cd realtimetransit

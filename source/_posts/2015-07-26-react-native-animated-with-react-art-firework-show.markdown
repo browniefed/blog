@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "React-Native Animated with React-Art - Firework Show"
-date: 2015-07-26 22:12
+title: "React-Native Animated with React-Art - Firework Tap To Shoot"
+date: 2015-08-15 22:12
 comments: true
 categories: react-native react react-art animated firework shooter tap animations
 published: false
@@ -17,6 +17,8 @@ This is what we're building
 
 {% img http://i.imgur.com/Dj60a6e.gif Firework Shooter %}
 
+
+<!-- more -->
 
 #Setup
 
@@ -115,8 +117,8 @@ We'll use the `TouchableWithoutFeedback` to call out to a function to queue up a
 Check that off the list.
 
 ```
-
-//Modified this to use the AnimatedShape we create up above. Thanks Facebook :)
+//React-Art ships with this component however not react-native-art implementation we'll just grab it and
+//modify this to use the AnimatedShape we create up above. Thanks Facebook :)
 
 /**
  * Copyright 2013-2014 Facebook, Inc.

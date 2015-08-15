@@ -26,6 +26,8 @@ We will need to do 2 things.
 * Add the `ART.xcodeproj` to XCode
 * Link the binary
 
+<!-- more -->
+
 
 To add ART.xcodeproj find the file located in `react-native/Libraries/ART/ART.xcodeproj` and just drag it over to the `Libraries` section in XCode.
 That should look like so

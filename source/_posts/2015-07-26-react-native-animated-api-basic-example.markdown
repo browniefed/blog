@@ -13,6 +13,9 @@ Animations are finally solved in React? That's a bold claim, but lets explore th
 
 {% img http://i.imgur.com/JlX4nV0.gif Final Animation Result %}
 
+<!-- more -->
+
+
 #Resources
 
 * [Cheng Lou - The State of Animation in React at react-europe 2015](https://www.youtube.com/watch?v=1tavDv5hXpo)

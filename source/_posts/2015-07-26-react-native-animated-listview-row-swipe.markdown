@@ -18,6 +18,7 @@ This is not an orignal interaction I created, you can follow along with how I st
 
 Swiping rows is also just a normal action in iOS. However there is an ongoing debate here about ListView/ScrollView being wrapped in a UITableView which would provide some of this interaction as default. You can read through it here [https://github.com/facebook/react-native/issues/332](https://github.com/facebook/react-native/issues/332) but we'll forge ahead and implement it with what we have to work with.
 
+<!-- more -->
 
 # The Concept
 

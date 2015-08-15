@@ -31,6 +31,8 @@ var Checkbox = Ractive.extend({
 ```
 {% endraw %}
 
+<!-- more -->
+
 To use it
 {% raw %}
 

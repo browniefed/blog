@@ -10,6 +10,8 @@ Flexbox layout takes a bit getting used to. It's surprisngly simple but after so
 
 Some examples
 
+
+
 ## Percentage height sections
 
 These are seemingly simple to do in CSS. Specify `height: 50%` and you get a magical 50% height. Yeah I'm over simplifying it but in general that's what you get. In flex it's different.
@@ -51,6 +53,8 @@ var styles = StyleSheet.create({
 });
 
 ```
+
+<!-- more -->
 
 
 This makes it look like percentages, however what actually is happening is just ratios.

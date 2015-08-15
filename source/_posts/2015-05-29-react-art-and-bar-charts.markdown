@@ -15,6 +15,8 @@ I'm going to leverage [Paths.js](https://github.com/andreaferretti/paths-js) bec
 The end result will look something
 {% img http://i.imgur.com/DpChFtO.png Bar Chart Result w/ Hover%}
 
+<!-- more -->
+
 
 ### Boilerplate
 

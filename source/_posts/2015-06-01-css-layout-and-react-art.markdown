@@ -14,6 +14,7 @@ Layout is difficult. There have been attempts at various constraint based layout
 
 Now this is all fine and well but from the bit I've read constraints fall down sometimes. This usually happens when you don't specify enough constraints based on the current layout.
 
+
 ### Layout is hard!
 
 Parent layouts get effected by their child layouts. CSS is weird in that you can remove items from layout with `position: absolute` but ultimately the top parent `width/height` is directly effected by it's children.
@@ -21,6 +22,9 @@ Parent layouts get effected by their child layouts. CSS is weird in that you can
 This is an over simplification but many times in `React` you have to hook into `componentDidMount` get the child width and take action.
 
 An example would be even width labels in a form. We could measure the text but depending on `font`, `font-size` it could measure each value differently. So we hide the form on initial render, get the max label width and set it on state.
+
+<!-- more -->
+
 
 ### CSS-Layout Basics
 

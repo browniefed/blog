@@ -45,6 +45,9 @@ var NameSupplier = function(Component) {
 
 ```
 
+<!-- more -->
+
+
 This component is slightly contrived and doesn't show this will help us integrate with a legacy app. All this component is doing is passing down a prop to a component you gave it.
 So how would we go about using this higher order component?
 

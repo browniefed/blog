@@ -21,6 +21,9 @@ Our tilemap source will be the fabulous [OpenStreetMap](https://www.openstreetma
 
 This was going to be a blog post about creating a map but I ended up turning it into a library.
 
+<!-- more -->
+
+
 ### What I Built
 
 I ended up writing up a library to show it off.

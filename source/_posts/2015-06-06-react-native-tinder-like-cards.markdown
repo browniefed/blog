@@ -18,6 +18,9 @@ What we'll make
 
 {% img http://i.imgur.com/tTcT7xJ.png End Result %}
 
+<!-- more -->
+
+
 ## Concept
 
 We'll create a card. On touch press/grant we'll figure out the offset of the card to the touch and start generating the transform to move/rotate the card.

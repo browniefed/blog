@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "React-native Animated API with PanResponder"
-date: 2015-07-26 14:17
+date: 2015-08-15 14:17
 comments: true
 categories: react-native react Animated API PanResponder touch movement tinder 
-published: false
 ---
 
 #Introduction 
@@ -14,6 +13,12 @@ The previous example was a very basic one, just moving a box around the screen. 
 This blog post was inspired by [https://github.com/brentvatne/react-native-animated-demo-tinder](https://github.com/brentvatne/react-native-animated-demo-tinder). I decide to break it apart, simplify it and explain the bits as we re-build it.
 
 We will not fully reimplement it since you can learn the full ins and outs by checking out the code.
+
+{% img http://i.imgur.com/b5K2fcx.gif Final with rotation and opacity %}
+
+
+<!-- more -->
+
 
 # Setup
 
@@ -110,7 +115,7 @@ We need `onMoveShouldSetResponderCapture` and `onMoveShouldSetPanResponderCaptur
 
 The function `onPanResponderGrant` is called once when we approve the animation. This gives us all of our initial values. We set the start value, and then also the offset which is our current pan values. Then we set our animation start values to `0,0`. This basically resets our movement changes so our delta `x,y` will be applied from a 0 point. Hopefully that makes sense.
 
-We give our `onPanResponderMove` an `Animated.event`. This creates a function that will automatically take the gestureState and extract change in `x,y` aka `deltaX`, and `deltaY` and put those changes on our `this.state.pan`.
+We give our `onPanResponderMove` an `Animated.event`. This creates a function that will automatically take the gestureState which has 2 keys on it `dx` and `dy` and put those changes on our `this.state.pan.x` and our `this.state.pan.y` respectively.
 
 Finally `onPanResponderRelease` we call `flattenOffset`. This takes the current `x,y` and the current offset (aka how much you've dragged it around). And combines them.
 

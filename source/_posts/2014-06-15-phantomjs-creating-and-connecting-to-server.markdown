@@ -10,6 +10,9 @@ At my work we are a Java shop. So spinning up a server is quite a process. Addit
 
 So to make things simpler I decided it'd be in my best interest to use PhatonmJS. I decided to spin up a server using `var server = require('webserver').create();` and manage the requests and just route and serve up all the correct files. I thought this would work however I ran into a snag. Here is some sample code below
 
+<!-- more -->
+
+
 ```
 var server = require('webserver').create();
 var url = 'localhost:8000'

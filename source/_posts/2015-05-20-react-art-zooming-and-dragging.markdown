@@ -25,6 +25,8 @@ Example:
 </Group>
 ```
 
+<!-- more -->
+
 The coordinates of the circle on the whole canvas would actually be `120,120` but because of the group at `x = 100, y = 100` we just need to say `x = 20, y = 20`.
 
 
