@@ -300,4 +300,22 @@ p > code {
 .title-listing {
 	margin-left: $month-indent;
 	}
+
+
+figure.code {
+    border-top: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
+
+    td.gutter {
+        display: none;
+    }
+
+    td.code pre {
+        border: none;
+    }
+
+    .highlight > table {
+        width: 100%;
+    }
+}
 	
