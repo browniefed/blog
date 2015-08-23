@@ -6,15 +6,15 @@ single: true
 <!-- START OF _layouts/post.html -->
 
 {% include article.html %}
+
+<footer style="margin-top: 10px;">
+    {% include post/author_elaborate.html %}
+</footer>
 {% if site.disqus_short_name and page.comments == true %}
   <section>
     <h1>Comments</h1>
     <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
   </section>
 {% endif %}
-<div class="article-wrap">
-<footer style="margin-top: 10px;">
-    {% include post/author_elaborate.html %}
-</footer>
-</div>
+
 <!-- END OF _/layouts/post.html -->
