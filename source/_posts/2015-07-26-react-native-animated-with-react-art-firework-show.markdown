@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "React-Native Animated with React-Art - Firework Tap To Shoot"
-date: 2015-08-15 22:12
+date: 2015-08-29 22:12
 comments: true
 categories: react-native react react-art animated firework shooter tap animations
-published: false
 ---
 
 #Introduction
