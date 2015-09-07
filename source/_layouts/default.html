@@ -22,7 +22,8 @@
 		
 		<!-- jQuery and plugins -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		
+		<script type="text/javascript" src="{{ root_url }}/js/jquery.zclip.min.js"></script>
+
 		<!-- Syntax highlighter -->
 		<link href="{{ root_url }}/stylesheets/prettify-hemisu.css" type="text/css" rel="stylesheet" />
 		<script type="text/javascript" src="{{ root_url }}/js/prettify.js"></script>
@@ -76,10 +77,12 @@
 			});
 			$('.clip-btn').zclip({
 				path:'{{ root_url }}/js/ZeroClipboard.swf',
-				copy: $(this).next('code').text(),
+				copy: function() {
+                    return $(this).next('code').text().split("\n").join("\r\n")
+                },
 				afterCopy: function(){
 					$(this).replaceWith('<div class="clip-btn">copied!');
-					}
+				}
 			});
 		});
 	</script>

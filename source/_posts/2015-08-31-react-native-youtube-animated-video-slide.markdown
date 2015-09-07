@@ -62,6 +62,8 @@ Then we use `createAnimatedComponent` to create an animated `ScrollView` and `An
 
 # Basic Component
 
+{% raw %}
+
 ```
 var YoutubeVideoSlide = React.createClass({
   getInitialState: function() {
@@ -106,6 +108,9 @@ var styles = StyleSheet.create({
 });
 
 ```
+
+{% endraw %}
+
 
 We setup `flex:1` on the `View` so that the `ScrollView` will size correctly. We set the `width` and `height` on the `AnimatedVideo` to our `16:9` ratio. In the state we setup the initial scale to `1`, and an `X,Y` position for the moving video.
 
@@ -288,6 +293,8 @@ The video source comes from [http://camendesign.com/code/video_for_everybody/tes
 
 # Full Code
 
+{% raw %}
+
 ```
 var React = require('react-native');
 var Dimensions = require('Dimensions');
@@ -460,4 +467,5 @@ var styles = StyleSheet.create({
 
 
 ```
+{% endraw %}
 
