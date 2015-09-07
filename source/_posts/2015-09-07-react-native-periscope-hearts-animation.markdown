@@ -19,6 +19,8 @@ Periscope not only has an iPhone/Android app but it also has a web app with the 
 ### Live code: [https://rnplay.org/apps/8VhSjw](https://rnplay.org/apps/8VhSjw)
 
 
+<!-- more -->
+
 # What it looks like on Periscope
 
 If you don't know what I'm talking about, the heart animation looks like this. 
@@ -294,7 +296,7 @@ Almost done! Now lets make it sway a little bit. This one is a little difficult 
 ```
 this._xAnimation = this._yAnimation.interpolate({
   inputRange: [0, ANIMATION_END_Y/2, ANIMATION_END_Y],
-  outputRange: [0, 5, 0]
+  outputRange: [0, 15, 0]
 })
 
 this._rotateAnimation = this._yAnimation.interpolate({
@@ -315,7 +317,7 @@ getHeartAnimationStyle: function() {
 },
 ```
 
-This causes one sway to happen for `5` pixels then come back to the center. There are three rotations that happen that will make it look like it's wobbling a bit more.
+This causes one sway to happen for `15` pixels then come back to the center. There are three rotations that happen that will make it look like it's wobbling a bit more.
 
 The `_xAnimation` input range is from `0` to half the animation, to the end. Since our value of the `_xAnimation` interpolation is the end value of the animation we don't need to `extrapolate: clamp` here.
 
@@ -358,7 +360,7 @@ var AnimatedHeart = React.createClass({
 
     this._xAnimation = this._yAnimation.interpolate({
       inputRange: [0, ANIMATION_END_Y/2, ANIMATION_END_Y],
-      outputRange: [0, 5, 0]
+      outputRange: [0, 15, 0]
     })
 
     this._rotateAnimation = this._yAnimation.interpolate({
@@ -492,6 +494,7 @@ Thank you to Anthony Webb for the submission. As always check out the live code 
 
 If you any other inquiries do let me know and I'll show you how to build them.
 
+{% img http://i.imgur.com/5JhgzQV.gif Purple floating fading swaying rotating hearts %}
 
 # Final Code
 
@@ -561,7 +564,7 @@ var AnimatedHeart = React.createClass({
 
     this._xAnimation = this._yAnimation.interpolate({
       inputRange: [0, ANIMATION_END_Y/2, ANIMATION_END_Y],
-      outputRange: [0, 5, 0]
+      outputRange: [0, 15, 0]
     })
 
     this._rotateAnimation = this._yAnimation.interpolate({
