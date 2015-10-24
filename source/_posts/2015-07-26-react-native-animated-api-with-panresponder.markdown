@@ -93,12 +93,18 @@ The `PanResponder` is our touch handler. The great thing about the `PanResponder
 We need to create our PanResponder
 
 ```
+
   componentWillMount: function() {
+      this._animatedValueX = 0;
+      this._animatedValueY = 0; 
+      this.state.pan.x.addListener((value) => this._animatedValueX = value.value);
+      this.state.pan.y.addListener((value) => this._animatedValueY = value.value);
+
         this._panResponder = PanResponder.create({
           onMoveShouldSetResponderCapture: () => true, //Tell iOS that we are allowing the movement
           onMoveShouldSetPanResponderCapture: () => true, // Same here, tell iOS that we allow dragging
           onPanResponderGrant: (e, gestureState) => {
-            this.state.pan.setOffset({x: this.state.pan.x.getAnimatedValue(), y: this.state.pan.y.getAnimatedValue()});
+            this.state.pan.setOffset({x: this._animatedValueX, y: this._animatedValueY});
             this.state.pan.setValue({x: 0, y: 0}); //Initial value
           },
           onPanResponderMove: Animated.event([
@@ -108,12 +114,21 @@ We need to create our PanResponder
             this.state.pan.flattenOffset(); // Flatten the offset so it resets the default positioning
           }
         });
+  },
+  componentWillUnmount: function() {
+    this.state.pan.x.removeAllListeners();  
+    this.state.pan.y.removeAllListeners();
   },  
 
 ```
 We need `onMoveShouldSetResponderCapture` and `onMoveShouldSetPanResponderCapture` to always return true. This tells iOS that we are allowing the user to make movements and we're going to track them.
 
-The function `onPanResponderGrant` is called once when we approve the animation. This gives us all of our initial values. We set the start value, and then also the offset which is our current pan values. Then we set our animation start values to `0,0`. This basically resets our movement changes so our delta `x,y` will be applied from a 0 point. Hopefully that makes sense.
+The function `onPanResponderGrant` is called once when we approve the animation. This gives us all of our initial values. We set the start value, and then also the offset which is our current pan values. 
+
+**UPDATE** As of .11 of React Native, `getAnimatedValue` has been deprecated. The accepted practice is to add a listener to each of the x/y values on our `Animated.Value`. Then we keep track of them. The callback/arrow function will be given an object like so `{value: .123}` or whatever the corresponding value is. We then update our tracking variables.
+Don't forget to removeAllListeners in our `componetWillUnmount` or we'll have a memory leak.
+
+Then we set our animation start values to `0,0`. This basically resets our movement changes so our delta `x,y` will be applied from a 0 point. Hopefully that makes sense.
 
 We give our `onPanResponderMove` an `Animated.event`. This creates a function that will automatically take the gestureState which has 2 keys on it `dx` and `dy` and put those changes on our `this.state.pan.x` and our `this.state.pan.y` respectively.
 
@@ -236,17 +251,23 @@ var SQUARE_DIMENSIONS = 100;
 
 
 var AnimatedFlick = React.createClass({
+  
   getInitialState: function() {
     return {
         pan: new Animated.ValueXY()
     };
   },
   componentWillMount: function() {
+    this._animatedValueX = 0;
+    this._animatedValueY = 0; 
+    this.state.pan.x.addListener((value) => this._animatedValueX = value.value);
+    this.state.pan.y.addListener((value) => this._animatedValueY = value.value);
+    
         this._panResponder = PanResponder.create({
           onMoveShouldSetResponderCapture: () => true,
           onMoveShouldSetPanResponderCapture: () => true,
           onPanResponderGrant: (e, gestureState) => {
-            this.state.pan.setOffset({x: this.state.pan.x.getAnimatedValue(), y: this.state.pan.y.getAnimatedValue()});
+            this.state.pan.setOffset({x: this._animatedValueX, y: this._animatedValueY});
             this.state.pan.setValue({x: 0, y: 0});
           },
           onPanResponderMove: Animated.event([
@@ -259,6 +280,10 @@ var AnimatedFlick = React.createClass({
           }
         });
   },  
+  componentWillUnmount: function() {
+    this.state.pan.x.removeAllListeners();  
+    this.state.pan.y.removeAllListeners();
+  },
   getStyle: function() {
 
 
@@ -307,7 +332,7 @@ var styles = StyleSheet.create({
   } 
 });
 
-AppRegistry.registerComponent('AnimatedFlick', () => AnimatedFlick);
+AppRegistry.registerComponent('SampleApp', () => AnimatedFlick);
 
 
 ```

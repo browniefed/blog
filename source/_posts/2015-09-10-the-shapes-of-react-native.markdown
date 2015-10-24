@@ -20,6 +20,8 @@ I'm going on vacation for a month. So this shall be dubbed "One of the more poin
 {% img http://i.imgur.com/cWR7FKh.gif What am doing with my life %}
 
 
+<!-- more -->
+
 ## Live Code [https://rnplay.org/apps/58FEmw](https://rnplay.org/apps/58FEmw)
 
 # Key Takeaways
