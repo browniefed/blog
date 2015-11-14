@@ -153,7 +153,7 @@ We'll do the normal "say yes to allowing us to touch things", and then we'll set
 
     this.state.position.y.addListener((value) => {
       this._y = value.value;
-      var scaleValue = this._scale.getAnimatedValue();
+      var scaleValue = this._scale.__getAnimatedValue();
       var currentVideoWidth = scaleValue * videoWidth;
       var buffer = ((videoWidth - currentVideoWidth)/2);
       this.state.position.x.setValue(buffer);
@@ -171,7 +171,7 @@ The `clamp` is to say that this value cannot go above or below these values.
 
 You may be wondering why we setup `translateY` when the `inputRange` and `outputRange` are exactly the same. The `clamp` is the key part. This means that if a user tries to slide the video up it will not grow in scale, or slide the video upwards. It can only go down.
 
-We setup the listener so we can keep track of our `y` value, we'll get into that later. We'll use `getAnimatedValue` to get the current scale. **THIS WILL NOT WORK IN .11-rc** and above. You cannot currently listen on interpolated values, and we need the interpolated value for our math.
+We setup the listener so we can keep track of our `y` value, we'll get into that later. We'll use `__getAnimatedValue` to get the current scale. **THIS WILL NOT WORK IN .11-rc** and above. You cannot currently listen on interpolated values, and we need the interpolated value for our math.
 
 We get the original `videoWidth` and multiply it times the scale value so we can get the current `videoWidth`. We subtract the `currentVideoWidth` from the `videoWidth` and divide it by `2` to get the current buffer. That buffer is the space between the right side of the video and the current scaled video. If we don't do this then the X/Y scaling on the video will just squish it to the middle of the screen. What we want to do is have it slide down the right side of the screen.
 
@@ -381,7 +381,7 @@ var YoutubeVideoSlide = React.createClass({
 
     this.state.position.y.addListener((value) => {
       this._y = value.value;
-      var scaleValue = this._scale.getAnimatedValue();
+      var scaleValue = this._scale.__getAnimatedValue();
       var currentVideoWidth = scaleValue * videoWidth;
       var buffer = ((videoWidth - currentVideoWidth)/2);
       this.state.position.x.setValue(buffer);

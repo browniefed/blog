@@ -10,5 +10,5 @@ footer: true
 {% img /images/author.jpeg This is me %} 
 
 <p>
-My name is Jason Brown, I’m an entrepreneur, developer, and general hobbyist. I work full time as a front end developer and develop in anything, and everything in my free time. If you ever want an explanation or to contact me for whatever reason you can drop me a line at <a href="http://twitter.com/browniefed">@browniefed</a> or email me at ( <a href="mailto:browniefed@gmail.com">browniefed@gmail.com</a> ). 
+My name is Jason Brown, I'm a front end developer passionate about building things with the latest and greatest technologies. At the moment that's currently React. Also I'm currently exploring React Native and delving into the world of mobile development. If you are looking for someone to build something or to ask any questions you can shoot me an email me at <a href="mailto:browniefed@gmail.com">browniefed@gmail.com</a> or tweet at me <a href="http://twitter.com/browniefed">@browniefed</a>.
 </p>

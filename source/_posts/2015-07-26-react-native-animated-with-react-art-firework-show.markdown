@@ -272,7 +272,7 @@ Our code will look like so
     adjustShootingFill: function(_shootingColor, value) {
         Animated.timing(_shootingColor, {
           duration: 16,
-          toValue: _shootingColor.getAnimatedValue() == 0 ? 1 : 0
+          toValue: _shootingColor.__getAnimatedValue() == 0 ? 1 : 0
         }).start()
     },
 
@@ -282,7 +282,7 @@ We start off by adding a new `Animated.Value`, and set it to 0. We add it to our
 Then we add a listener to it. What `addListener` does is provides a callback that will be called each time the mortar position is updated.
 The bind is just so it'll pass in our `_shootingColor` Animated value as the first argument.
 
-We'll use the `Animated.timing` function again to transition it between colors over 16ms. We call `getAnimatedValue()` and do the inverse of it.
+We'll use the `Animated.timing` function again to transition it between colors over 16ms. We call `__getAnimatedValue()` and do the inverse of it.
 
 So every `16ms` the mortar will transition from yellow => orange => yellow => orange, etc.
 
@@ -451,7 +451,7 @@ So our mortar fading out and disappearing, our particles expanding, changing col
 
     ///
       adjustParticleFill: function(_particleColor, value) {
-        var _currentFill = _particleColor.getAnimatedValue(),
+        var _currentFill = _particleColor.__getAnimatedValue(),
             _particleFill = _currentFill === 5 ? 0 : _currentFill + 1;
 
         Animated.timing(_particleColor, {
@@ -629,11 +629,11 @@ var FireworkShooter = React.createClass({
   adjustShootingFill: function(_shootingColor, value) {
     Animated.timing(_shootingColor, {
       duration: 16,
-      toValue: _shootingColor.getAnimatedValue() == 0 ? 1 : 0
+      toValue: _shootingColor.__getAnimatedValue() == 0 ? 1 : 0
     }).start()
   },
   adjustParticleFill: function(_particleColor, value) {
-    var _currentFill = _particleColor.getAnimatedValue(),
+    var _currentFill = _particleColor.__getAnimatedValue(),
         _particleFill = _currentFill === 5 ? 0 : _currentFill + 1;
 
     Animated.timing(_particleColor, {

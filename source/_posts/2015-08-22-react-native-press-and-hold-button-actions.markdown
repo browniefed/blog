@@ -102,7 +102,13 @@ We set it to be position absolute so it doesn't effect layout and sits behind th
         textComplete: ''
     };
   },
+  componentWillMount: function() {
+    this._value = 0;
+    this.state.pressAction.addListener((v) => this._value = v.value);
+  },
 ```
+UPDATE: `getAnimatedValue` is no longer accessable in the Animated API.
+We need to attach a listener so that we can save off the value to use later. This allows us to track the value of the animation so we can confirm the user has held it for an appropriate length of time.
 
 # Handle The Presses
 
@@ -115,13 +121,13 @@ handlePressIn: function() {
 },
 handlePressOut: function() {
     Animated.timing(this.state.pressAction, {
-        duration: this.state.pressAction.getAnimatedValue() * ACTION_TIMER,
+        duration: this._value * ACTION_TIMER,
         toValue: 0
     }).start();
 },
 animationActionComplete: function() {
     var message = '';
-    if (this.state.pressAction.getAnimatedValue() === 1) {
+    if (this._value === 1) {
         message = 'You held it long enough to fire the action!';
     }
     this.setState({
@@ -152,7 +158,7 @@ Here we use the `onPressIn` and `onPressOut` callbacks. These will trigger timed
 
 `onPressOut` we'll animate it from `1` back down to `0`. However if a user lifts their finger before the `400ms` threshold is reached then it will animated down from that value. For example holding it down for `200ms` would mean our `pressAction` animated value was at `.5` so it would then animated down from `.5` to `0` over `400ms`.
 
-Animating down over the full `400ms` is not ideal, so what we'll do is get the current animated value with `this.state.pressAction.getAnimatedValue()` and multiply it times the full `ACTION_TIMER` which means out `.5` animated value would yield us the correct `200ms` to transition back to `0`.
+Animating down over the full `400ms` is not ideal, so what we'll do is get the current animated value with `this._value` and multiply it times the full `ACTION_TIMER` which means out `.5` animated value would yield us the correct `200ms` to transition back to `0`.
 
 Finally we pass in a callback to our `start` of `handlePressIn` which if our `pressAction` animated value gets to `1` aka being compelte then we will tell the user their action happened.
 
@@ -284,6 +290,10 @@ var AnimatedButtonPress = React.createClass({
         buttonHeight: 0
     };
   },
+  componentWillMount: function() {
+    this._value = 0;
+    this.state.pressAction.addListener((v) => this._value = v.value);
+  },
   handlePressIn: function() {
     Animated.timing(this.state.pressAction, {
         duration: ACTION_TIMER,
@@ -292,13 +302,13 @@ var AnimatedButtonPress = React.createClass({
   },
   handlePressOut: function() {
     Animated.timing(this.state.pressAction, {
-            duration: this.state.pressAction.getAnimatedValue() * ACTION_TIMER,
+            duration: this._value * ACTION_TIMER,
             toValue: 0
     }).start();
   },
   animationActionComplete: function() {
     var message = '';
-    if (this.state.pressAction.getAnimatedValue() === 1) {
+    if (this._value === 1) {
         message = 'You held it long enough to fire the action!';
     }
     this.setState({
@@ -370,5 +380,6 @@ var styles = StyleSheet.create({
 });
 
 
-AppRegistry.registerComponent('AnimatedButtonPress', () => AnimatedButtonPress);
+AppRegistry.registerComponent('SampleApp', () => AnimatedButtonPress);
+
 ```

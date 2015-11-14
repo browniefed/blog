@@ -7,7 +7,7 @@ title: JavaScript Without Grammar
 subtitle: The probably already blogged about story on JavaScript
 author: Jason Brown
 simple_search: http://google.com/search
-description: A blog of JavaScript techniques and tutorials
+description: A blog of JavaScript techniques and tutorials. Including React, React Native, and anything else I feel like writing about.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -71,6 +71,9 @@ github_skip_forks: true
 # Twitter
 twitter_user: browniefed
 twitter_tweet_button: true
+
+# Facebook
+facebook_app_id: 1662675577336433
 
 # Google +1
 google_plus_one: false

@@ -4,6 +4,13 @@ title: "React Native - Recreating the Apple TV Icons"
 date: 2015-10-23 20:53
 comments: true
 categories: react-native react tvos apple tv icons
+facebook:
+    image: http://i.imgur.com/cfptS31.png
+twitter_card:
+    creator: browniefed
+    type: summary_large_image
+    image: http://i.imgur.com/cfptS31.png
+
 ---
 
 I had attempted to recreate this in the past but could never come up with anything elegant. I saw this post not too long ago [Recreating the Apple TV icons in JavaScript and CSS](https://medium.com/@nashvail/recreating-the-apple-tv-icons-in-javascript-and-css-eec306d41617) by [Nash Vail](https://twitter.com/NashVail).
