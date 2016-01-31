@@ -12,6 +12,9 @@ twitter_card:
     image: http://i.imgur.com/AaPPZsC.png
 ---
 
+## OUTDATED
+This blog is a bit outdated, and uses gl-react-native 1.3. I highly recommend checking out [https://github.com/gre/gl-react-image-effects](https://github.com/gre/gl-react-image-effects) which was inspired by this post and uses gl-react-native 2.*! 
+
 ## Intro
 Instagram is a fantastic app and a great concept to model after for learning fragment shaders. We won't get too deep into fragment shaders but I'll take a little bit about what they are and point you to some resources.
 

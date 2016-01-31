@@ -177,6 +177,7 @@ var VectorWidget = React.createClass({
       <Surface
         width={700}
         height={700}
+      >
         {this.renderGraphic(this.state.degrees)}
       </Surface>
     );
