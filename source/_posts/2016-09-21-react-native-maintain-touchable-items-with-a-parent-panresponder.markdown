@@ -19,6 +19,8 @@ You may be running into this because you copy and pasted it from here the docume
 (I copy and paste this all the time).
 We'll talk about the capture phase next.
 
+<!-- more -->
+
 This is far from the case. As always, React Native internal code is all built on the same components you are using so be sure and always read that code.
 Navigation is one example that uses a top level PanResponder and only deals with touches on the outer edge of the screen.
 
