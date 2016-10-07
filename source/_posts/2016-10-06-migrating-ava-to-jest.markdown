@@ -12,7 +12,7 @@ First off. Star the repo here [https://github.com/facebook/jest](https://github.
 
 I was an early adopter of Jest back in the early days ( ~v0.4). It was okay but difficult to setup and slow with sometimes weird results and behaviors.
 
-Tireless effort has been done by [Christopher Pojer](https://twitter.com/cpojer) to get to the latest Jest (v16.01) so props to him and others working with him.
+Tireless effort has been done by [Christoph Pojer](https://twitter.com/cpojer) to get to the latest Jest (v16.01) so props to him and others working with him.
 
 Check out the fantastic documentation here [https://facebook.github.io/jest/docs/getting-started.html](https://facebook.github.io/jest/docs/getting-started.html#content)
 
