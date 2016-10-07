@@ -6,7 +6,7 @@ comments: true
 categories: jest testing ava react
 ---
 
-First off. Star the repo here  [https://github.com/facebook/jest](https://github.com/facebook/jest) so you can show some love for the hardwork that has been put into it.
+First off. Star the repo here [https://github.com/facebook/jest](https://github.com/facebook/jest) so you can show some love for the hardwork that has been put into it.
 
 ### Props
 
@@ -14,14 +14,14 @@ I was an early adopter of Jest back in the early days ( ~v0.4). It was okay but 
 
 Tireless effort has been done by [Christoph Pojer](https://twitter.com/cpojer) to get to the latest Jest (v16.01) so props to him and others working with him.
 
-Check out the fantastic documentation here [https://facebook.github.io/jest/docs/getting-started.html#content](https://facebook.github.io/jest/docs/getting-started.html#content)
+Check out the fantastic documentation here [https://facebook.github.io/jest/docs/getting-started.html](https://facebook.github.io/jest/docs/getting-started.html#content)
 
 ### Migrating in seconds
 
 There is almost nothing to write about on this topic because it was almost too easy.
 Mostly because of [jest-codemods](https://github.com/skovhus/jest-codemods). It is a set of codemods crafted to transition your Tape or Ava project to Jest.
 
-It is worth it. Jest has come along way when it comes to speed, functionality, and ease of configuration (or lack there of).
+It is worth it. Jest has come along way when it comes to speed, functionality, configuration options, and ease of configuration (or lack there of to get started).
 
 There were minor configurations I had to setup, but most were copying and pasting from the documentation.
 
@@ -35,13 +35,16 @@ First install `jest-codemods`
 
 Then run `jest-codemods` in a desired directory.
 It will prompt you with `Ava`, `Tape`, or a `both` option.
-Then you provide a glob. I was running in my root so I provied `**/__tests__/**/*.js` to convert all of my tests.
+Then you provide a glob. I was running in my root so I provided the glob `**/__tests__/**/*.js` to convert all of my tests.
 
 That was it.
 
+<!-- more -->
 ### Done
 
 For basic implementations that is all you need!
+
+Add `"test": "jest"` to your `package.json` `scripts` section and you're good to go!
 
 ### Caveats
 
@@ -59,7 +62,8 @@ This isn't a deal breaker by any means. And Christopher is happy to accept a PR 
  Our setup uses Webpack `root` property to use shared code across 2 directories in a monorepo. Adding that in other testing libraries required webpack and other NPM installed libraries.
  In Jest it is as simple as adding this to your config.
 
- ```
+
+```
  "modulePaths": [
     "/shared"
   ],
@@ -78,3 +82,8 @@ That's all you need to do to get CSS modules working.
 
 For more awesome-examples and full configuration options checkout the documentation [https://facebook.github.io/jest/docs/getting-started.html](https://facebook.github.io/jest/docs/getting-started.html).
 Many of the normal uses cases have been though of and are documented with copy and paste configuration options!
+
+### Check it out
+
+I'm barely scratching the surface of what is great about Jest. 
+There is hopefully more coming but go use Jest, star the repo on git [https://github.com/facebook/jest](https://github.com/facebook/jest) and never look back.
