@@ -6,7 +6,7 @@ comments: true
 categories: new site
 ---
 
-I've officially launched my new site [Code Daily](codedaily.io). This site will now house all of my tutorials, screencasts, and courses.
+I've officially launched my new site [Code Daily](https://codedaily.io). This site will now house all of my tutorials, screencasts, and courses.
 
 The goal is to post some bit of content on a daily basis. Anything from a tutorial, to a screencast, or even full courses could be published daily!
 
@@ -16,6 +16,6 @@ I will do my best to provide value and making the "bleeding edge" of web/mobile 
 
 I will still update some content on this site, but at some point redirects will be setup to my new site. 
 
-So if you still want to get content visit [Code Daily](codedaily.io), and follow me on twitter at [https://twitter.com/codedailyio](https://twitter.com/codedailyio).
+So if you still want to get content visit [Code Daily](https://codedaily.io), and follow me on twitter at [https://twitter.com/codedailyio](https://twitter.com/codedailyio).
 
-### [Check it out here => Code Daily](codedaily.io)
+### [Check it out here => Code Daily](https://codedaily.io)
