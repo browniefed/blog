@@ -4,6 +4,12 @@ title: "Complete React Native Animations Course"
 date: 2017-08-03 13:56
 comments: true
 categories: react-native, animations, course, complete, master
+facebook:
+  image: https://codedaily.now.sh/courses/react_native_animations.png
+twitter_card:
+  creator: browniefed
+  type: summary_large_image
+  image: https://codedaily.now.sh/courses/react_native_animations.png
 ---
 
 React Native has increased in popularity over the past year. It's growth will only sky rocket as more companies like AirBnB, Uber, Facebook, and even smaller agencies learn to leverage it. 
@@ -15,3 +21,6 @@ In my course we will walk through basic animations, understanding interpolation,
 If you have learned anything from the free content I've put out and want to support me, or are just getting started then come master React Native animations with my course. 
 
 You can purchase it at [https://reactnativeanimations.com/](https://reactnativeanimations.com/).
+
+
+{% img https://codedaily.now.sh/courses/react_native_animations.png React Native Animations Course %}
